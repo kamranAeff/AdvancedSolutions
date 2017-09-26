@@ -3,8 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppTester", "AppTester\AppTester.csproj", "{75427F89-4E04-452E-B218-ABF83E97B1A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSharp", "CSharp", "{E6881EA0-2AB8-4D7B-AC87-F90A45F01E8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "C#\Repository\Repository.csproj", "{37415442-46BA-4603-B555-EA76C6D74579}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75427F89-4E04-452E-B218-ABF83E97B1A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75427F89-4E04-452E-B218-ABF83E97B1A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75427F89-4E04-452E-B218-ABF83E97B1A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75427F89-4E04-452E-B218-ABF83E97B1A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37415442-46BA-4603-B555-EA76C6D74579}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37415442-46BA-4603-B555-EA76C6D74579}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37415442-46BA-4603-B555-EA76C6D74579}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37415442-46BA-4603-B555-EA76C6D74579}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{37415442-46BA-4603-B555-EA76C6D74579} = {E6881EA0-2AB8-4D7B-AC87-F90A45F01E8C}
 	EndGlobalSection
 EndGlobal
