@@ -36,18 +36,20 @@
             this.btnSecondOff = new System.Windows.Forms.Button();
             this.bWorkerFirst = new System.ComponentModel.BackgroundWorker();
             this.bWorkerSecond = new System.ComponentModel.BackgroundWorker();
+            this.labelPercentage1 = new System.Windows.Forms.Label();
+            this.labelPercentage2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // progressBarSecond
             // 
-            this.progressBarSecond.Location = new System.Drawing.Point(13, 70);
+            this.progressBarSecond.Location = new System.Drawing.Point(12, 108);
             this.progressBarSecond.Name = "progressBarSecond";
             this.progressBarSecond.Size = new System.Drawing.Size(504, 23);
             this.progressBarSecond.TabIndex = 0;
             // 
             // progressBarFirst
             // 
-            this.progressBarFirst.Location = new System.Drawing.Point(13, 41);
+            this.progressBarFirst.Location = new System.Drawing.Point(13, 61);
             this.progressBarFirst.Name = "progressBarFirst";
             this.progressBarFirst.Size = new System.Drawing.Size(504, 23);
             this.progressBarFirst.TabIndex = 1;
@@ -105,18 +107,43 @@
             this.bWorkerSecond.WorkerReportsProgress = true;
             this.bWorkerSecond.WorkerSupportsCancellation = true;
             // 
+            // labelPercentage1
+            // 
+            this.labelPercentage1.BackColor = System.Drawing.Color.Transparent;
+            this.labelPercentage1.Location = new System.Drawing.Point(12, 45);
+            this.labelPercentage1.Name = "labelPercentage1";
+            this.labelPercentage1.Size = new System.Drawing.Size(504, 13);
+            this.labelPercentage1.TabIndex = 3;
+            this.labelPercentage1.Text = "%";
+            this.labelPercentage1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelPercentage2
+            // 
+            this.labelPercentage2.BackColor = System.Drawing.Color.Transparent;
+            this.labelPercentage2.Location = new System.Drawing.Point(12, 92);
+            this.labelPercentage2.Name = "labelPercentage2";
+            this.labelPercentage2.Size = new System.Drawing.Size(504, 13);
+            this.labelPercentage2.TabIndex = 3;
+            this.labelPercentage2.Text = "%";
+            this.labelPercentage2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // BackgroundWorkerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(529, 104);
+            this.ClientSize = new System.Drawing.Size(529, 143);
+            this.Controls.Add(this.labelPercentage2);
+            this.Controls.Add(this.labelPercentage1);
             this.Controls.Add(this.btnSecondOff);
             this.Controls.Add(this.btnSecondOn);
             this.Controls.Add(this.btnFirstOff);
             this.Controls.Add(this.btnFirstOn);
             this.Controls.Add(this.progressBarFirst);
             this.Controls.Add(this.progressBarSecond);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "BackgroundWorkerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BackgroundWorkerForm";
             this.ResumeLayout(false);
 
@@ -132,5 +159,7 @@
         private System.Windows.Forms.Button btnSecondOff;
         private System.ComponentModel.BackgroundWorker bWorkerFirst;
         private System.ComponentModel.BackgroundWorker bWorkerSecond;
+        private System.Windows.Forms.Label labelPercentage1;
+        private System.Windows.Forms.Label labelPercentage2;
     }
 }

@@ -20,7 +20,7 @@ namespace ConsoleApp.C7
             // next way
             bWorkerSecond.DoWork += delegate(object sender, DoWorkEventArgs e) {
                 int i = 0;
-                while (!bWorkerFirst.CancellationPending)
+                while (!bWorkerSecond.CancellationPending)
                 {
                     bWorkerSecond.ReportProgress(i, null);
                     i += 5;
@@ -37,12 +37,14 @@ namespace ConsoleApp.C7
 
         private void bWorkerSecond_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            progressBarSecond.Value = 100;
+            progressBarSecond.Value = 0;
+            labelPercentage2.Text = string.Format("{0} %", progressBarSecond.Value);
         }
 
         void bWorkerSecond_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progressBarSecond.Value = e.ProgressPercentage;
+            labelPercentage2.Text = string.Format("{0} %", e.ProgressPercentage);
         }
 
         private void btnFirstOn_Click(object sender, EventArgs e)
@@ -85,11 +87,13 @@ namespace ConsoleApp.C7
         private void bWorkerFirst_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progressBarFirst.Value = e.ProgressPercentage;
+            labelPercentage1.Text = string.Format("{0} %", e.ProgressPercentage);
         }
 
         private void bWorkerFirst_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             progressBarFirst.Value = 100;
+            labelPercentage1.Text = string.Format("{0} %", progressBarFirst.Value);
         }
     }
 }
