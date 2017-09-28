@@ -1,8 +1,6 @@
-﻿using ConsoleApp.C7;
-using System;
-using System.Threading;
+﻿using System;
 
-namespace ConsoleApp.C1
+namespace ConsoleApp.C7
 {
     class Program
     {
