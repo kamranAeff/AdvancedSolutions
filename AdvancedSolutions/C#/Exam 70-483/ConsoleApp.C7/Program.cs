@@ -10,11 +10,24 @@ namespace ConsoleApp.C1
         static void Main(string[] args)
         {
             Console.Title = "Chapter 7 (#70-483)";
+
+            /*
+             Threading
+             */
+
             //Example.Sample1();
 
             //Example.Sample2();
 
-            Example.Sample3();
+            //Example.Sample3();
+
+            /*
+             TPL - Task Paralel Library 
+             */
+
+            //TPL.Sample1();
+
+            TPL.Sample2();
 
 
             Console.ReadLine();
