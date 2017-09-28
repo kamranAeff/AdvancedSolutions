@@ -194,5 +194,40 @@ namespace ConsoleApp.C7
                 tasks.RemoveAt(index);
             }
         }
+
+        /// <summary>
+        /// WhenAll methodu WaitAny Methodundan ferqli olaraq icraya gonderilen tasklarin neticesini massiv kimi qaytarir
+        /// Butun Tasklarin bitmesini gozleyir
+        /// </summary>
+        async static public void Sample9()
+        {
+            var t1 = Task.Run<int>(() =>
+            {
+                Task.Delay(TimeSpan.FromSeconds(10)).Wait();
+                return 1;
+            });
+
+            var t2 = Task.Run(() =>
+            {
+                Task.Delay(TimeSpan.FromSeconds(11)).Wait();
+                return 2;
+            });
+
+            var t3 = Task.Run(() =>
+            {
+                Task.Delay(TimeSpan.FromSeconds(12)).Wait();
+                return 3;
+            });
+
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+            var results=await Task.WhenAll(t1,t2,t3);
+            stopWatch.Stop();
+
+            Console.WriteLine(">> Completed all tasks. Ellapsed time: {0:00} \nShowResults",stopWatch.Elapsed.Seconds);
+
+            foreach (int result in results)
+                Console.WriteLine(">> Value: {0}", result);
+        }
     }
 }
