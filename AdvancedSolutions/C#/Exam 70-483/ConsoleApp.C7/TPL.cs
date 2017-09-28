@@ -159,5 +159,42 @@ namespace ConsoleApp.C7
 
             Console.WriteLine("Completed All of Tasks , Ellapsed time: {0:00} ",stopWatch.Elapsed.Seconds);
         }
+
+        /// <summary>
+        /// WaitAny methodunun WaitAll methodundan ferqi parameter olaraq aldigi Task Massivinden her hansi bir taskin bitdiyi anda hemin taskin massivdeki indexini qaytarir
+        /// Progressbar ile icra edilen tasklarin icra %-ni gostermek ucun en yaxsi usuldur
+        /// </summary>
+        static public void Sample8()
+        {
+            List<Task> tasks = new List<Task>
+            {
+                Task.Run(() =>
+            {
+                Console.WriteLine("Task-1  Wait please...");
+                Task.Delay(TimeSpan.FromSeconds(10)).Wait();
+                Console.WriteLine("Task-1  {0:dd.MM.yyyy HH:mm:ss}", DateTime.Now);
+            }),
+            Task.Run(() =>
+            {
+                Console.WriteLine("Task-2  Wait please...");
+                Task.Delay(TimeSpan.FromSeconds(11)).Wait();
+                Console.WriteLine("Task-2  {0:dd.MM.yyyy HH:mm:ss}", DateTime.Now);
+            }),
+            Task.Run(() =>
+            {
+                Console.WriteLine("Task-3  Wait please...");
+                Task.Delay(TimeSpan.FromSeconds(12)).Wait();
+                Console.WriteLine("Task-3  {0:dd.MM.yyyy HH:mm:ss}", DateTime.Now);
+            })
+            };
+
+            int index;
+            while (tasks.Count>0)
+            {
+                index = Task.WaitAny(tasks.ToArray());
+                Console.WriteLine("Completed TaskID: {0} , Status: {1}", tasks[index].Id,tasks[index].Status);
+                tasks.RemoveAt(index);
+            }
+        }
     }
 }
