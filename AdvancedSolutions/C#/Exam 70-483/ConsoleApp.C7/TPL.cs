@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -102,6 +103,61 @@ namespace ConsoleApp.C7
             });
 
             Console.WriteLine(">> Result: {0}", tResult);
+        }
+
+        /// <summary>
+        /// .Wait() Methodu cari taskin bitmesini gozlemek ucun istifade olunur
+        /// ferqi gozle gormek ucun Sample4 ve sample 6 methodlarini birge istifade ede bilersiz
+        /// </summary>
+        static public void Sample6()
+        {
+            var tResult = Task.Run(() =>
+            {
+                Console.WriteLine("Wait please...");
+                Task.Delay(TimeSpan.FromSeconds(10)).Wait();
+                Console.WriteLine("{0:dd.MM.yyyy HH:mm:ss}", DateTime.Now);
+            });
+
+            tResult.Wait();
+
+            Console.WriteLine(tResult.Status);
+        }
+
+        /// <summary>
+        /// .WaitAll() Methodu teyin edilmis bir nece taskin bitmesini gozlemek ucun istifade olunur
+        /// .Wait methodunun sekildeyismesidir
+        ///  emeliyyatlar paralel icra olundugu ucun(ideal veziyyetde) umumilikde kecen vaxt en cox icra muddetine malik olan taskin muddetine beraber olacaq
+        /// </summary>
+        static public void Sample7()
+        {
+            Stopwatch stopWatch = new Stopwatch();
+
+            var t1 = Task.Run(() =>
+            {
+                Console.WriteLine("Task-1  Wait please...");
+                Task.Delay(TimeSpan.FromSeconds(10)).Wait();
+                Console.WriteLine("Task-1  {0:dd.MM.yyyy HH:mm:ss}", DateTime.Now);
+            });
+
+            var t2 = Task.Run(() =>
+            {
+                Console.WriteLine("Task-2  Wait please...");
+                Task.Delay(TimeSpan.FromSeconds(11)).Wait();
+                Console.WriteLine("Task-2  {0:dd.MM.yyyy HH:mm:ss}", DateTime.Now);
+            });
+
+            var t3 = Task.Run(() =>
+            {
+                Console.WriteLine("Task-3  Wait please...");
+                Task.Delay(TimeSpan.FromSeconds(12)).Wait();
+                Console.WriteLine("Task-3  {0:dd.MM.yyyy HH:mm:ss}", DateTime.Now);
+            });
+
+            stopWatch.Start();
+            Task.WaitAll(t1, t2, t3);
+            stopWatch.Stop();
+
+            Console.WriteLine("Completed All of Tasks , Ellapsed time: {0:00} ",stopWatch.Elapsed.Seconds);
         }
     }
 }

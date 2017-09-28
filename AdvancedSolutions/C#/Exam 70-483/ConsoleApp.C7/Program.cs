@@ -21,6 +21,7 @@ namespace ConsoleApp.C1
 
             //Example.Sample3();
 
+
             /*
              TPL - Task Paralel Library 
              */
@@ -33,7 +34,11 @@ namespace ConsoleApp.C1
             
             //TPL.Sample4();
 
-            TPL.Sample5();
+            //TPL.Sample5();
+
+            //TPL.Sample6();
+
+            TPL.Sample7();
 
             Console.ReadLine();
         }
