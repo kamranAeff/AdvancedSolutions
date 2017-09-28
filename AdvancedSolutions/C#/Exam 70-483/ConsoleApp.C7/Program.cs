@@ -27,8 +27,13 @@ namespace ConsoleApp.C1
 
             //TPL.Sample1();
 
-            TPL.Sample2();
+            //TPL.Sample2();
 
+            //TPL.Sample3();            
+            
+            //TPL.Sample4();
+
+            TPL.Sample5();
 
             Console.ReadLine();
         }

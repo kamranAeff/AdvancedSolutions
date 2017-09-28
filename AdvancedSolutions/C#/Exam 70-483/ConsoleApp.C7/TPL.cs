@@ -55,5 +55,53 @@ namespace ConsoleApp.C7
 
             });
         }
+
+        /// <summary>
+        /// Yaradilmis taskin icra edilmesi ucun .Start() Methodunu cagirmaq mutleqdir
+        /// </summary>
+        static public void Sample3()
+        {
+            var t1 = new Task(() => {
+                Console.WriteLine("Wait please...");
+                Task.Delay(TimeSpan.FromSeconds(10)).Wait();
+                Console.WriteLine("{0:dd.MM.yyyy HH:mm:ss}", DateTime.Now);
+                
+            });// Anonymous methods with lambda
+
+            t1.Start();// taskin icra edilmesi ucun mutleq vacibdir
+        }
+
+        /// <summary>
+        /// .Run()-methodu qeyd olunmus emeliyyati yerine yetirmek ucun Thread poola-yeni task elave edir, ve geriye hemin taski object kimi qaytarir
+        /// .Run()-methodunu icra etdikde taski .Start etmete ehtiyyac yoxdur
+        /// </summary>
+        static public void Sample4()
+        {
+            var tResult=Task.Run(() => {
+                Console.WriteLine("Wait please...");
+                Task.Delay(TimeSpan.FromSeconds(10)).Wait();
+                Console.WriteLine("{0:dd.MM.yyyy HH:mm:ss}", DateTime.Now);
+            });
+
+            Console.WriteLine(tResult.Status);
+        }
+
+        /// <summary>
+        /// .Run<TResult>()-methodu .Run()-methodundan (return Task; )ferqli olaraq  geriye netice qaytarir "Task<TResult>" tipinde
+        /// .neticeni almaq ucun await acar sozunden istifade olunur
+        /// await acar sozu taninmaq ucun async acar sozu ile isarelenmis methodda yazilmalidir
+        /// await ile isarelenen task emeliyyatin sona catmasini gozleyir mutleq
+        /// </summary>
+        async static public void Sample5()
+        {
+            var tResult = await Task.Run<int>(() =>
+            {
+                Console.WriteLine("Wait please...");
+                Task.Delay(TimeSpan.FromSeconds(10)).Wait();
+                return 5;
+            });
+
+            Console.WriteLine(">> Result: {0}", tResult);
+        }
     }
 }
