@@ -207,13 +207,13 @@ namespace ConsoleApp.C7
                 return 1;
             });
 
-            var t2 = Task.Run(() =>
+            var t2 = Task.Run<int>(() =>
             {
                 Task.Delay(TimeSpan.FromSeconds(11)).Wait();
                 return 2;
             });
 
-            var t3 = Task.Run(() =>
+            var t3 = Task.Run<int>(() =>
             {
                 Task.Delay(TimeSpan.FromSeconds(12)).Wait();
                 return 3;
