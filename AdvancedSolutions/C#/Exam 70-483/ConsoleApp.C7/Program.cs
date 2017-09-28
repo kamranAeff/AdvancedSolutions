@@ -40,7 +40,9 @@ namespace ConsoleApp.C7
 
             //TPL.Sample8();
 
-            TPL.Sample9();
+            //TPL.Sample9();
+
+            TPL.Sample10();
 
             Console.ReadLine();
         }

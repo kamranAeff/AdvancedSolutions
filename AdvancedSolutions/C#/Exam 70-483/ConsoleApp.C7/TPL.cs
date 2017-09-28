@@ -229,5 +229,43 @@ namespace ConsoleApp.C7
             foreach (int result in results)
                 Console.WriteLine(">> Value: {0}", result);
         }
+
+
+        /// <summary>
+        /// WhenAny methodu WhenAll Methodundan ferqli olaraq icraya gonderilen tasklarin her hansi biri icra olunan anda hemin taski qaytarir
+        /// </summary>
+        async static public void Sample10()
+        {
+            List<Task<object>> tasks = new List<Task<object>>
+            {
+                Task.Run<object>(() =>
+            {
+                Task.Delay(TimeSpan.FromSeconds(10)).Wait();
+                return "1";
+            }),
+            Task.Run<object>(() =>
+            {
+                Task.Delay(TimeSpan.FromSeconds(12)).Wait();
+                return 2;
+            }),
+            Task.Run<object>(() =>
+            {
+                Task.Delay(TimeSpan.FromSeconds(11)).Wait();
+                return 3;
+            })
+            };
+
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+            while (tasks.Count>0)
+            {
+                var task = await Task.WhenAny<object>(tasks);
+                Console.WriteLine("Completed TaskID: {0} , Status: {1}, Returned Value: {2}", task.Id, task.Status, task.Result);
+                tasks.Remove(task);
+            }
+            stopWatch.Stop();
+
+            Console.WriteLine(">> Completed all tasks. Ellapsed time: {0:00} \nShowResults", stopWatch.Elapsed.Seconds);
+        }
     }
 }
